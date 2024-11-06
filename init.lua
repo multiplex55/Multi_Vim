@@ -530,6 +530,7 @@ require('lazy').setup({
       }
     end,
   },
+	{ 'mfussenegger/nvim-dap', lazy = true },
   -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -708,7 +709,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        --lua_ls = {},
+        lua_ls = {},
         gopls = {},
         -- pyright = {},
         --rust_analyzer = {},
