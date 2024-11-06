@@ -1,0 +1,11 @@
+tags
+test.sh
+.luarc.json
+nvim
+
+spell/
+lazy-lock.json
+/nim_test/bin
+/nim_test/InputFiles
+/nim_test/temp
+/rust_test/target/debug
