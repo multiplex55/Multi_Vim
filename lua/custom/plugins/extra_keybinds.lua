@@ -1,0 +1,46 @@
+return {
+  {
+    vim.keymap.set('n', '<leader>npr', function()
+      local dir_path = vim.fn.expand '%:p:h'
+      local filename_no_ext = vim.fn.expand '%:t:r'
+      local full_path_with_ext = vim.fn.expand '%:p'
+
+      local cmd = string.format(':tabnew | term nim cpp -d:release -r --out:"%s\\bin\\%s" "%s"', dir_path, filename_no_ext, full_path_with_ext)
+      vim.cmd(cmd)
+    end, {
+      desc = '[n]im c[p]p [r]un release',
+    }),
+
+    -- Which-Key group labels
+    vim.keymap.set('n', '<leader>cc', '<Nop>', { desc = '[C]ode [C]argo' }),
+
+    -- Rust-related commands under <leader>cc
+    vim.keymap.set('n', '<leader>ccr', '<cmd>tabnew | term cargo run<cr>', { desc = '[C]ode [C]argo [R]un' }),
+    vim.keymap.set('n', '<leader>ccR', '<cmd>tabnew | term cargo run --release<cr>', { desc = '[C]ode [C]argo Run --[R]elease' }),
+    vim.keymap.set('n', '<leader>ccb', '<cmd>tabnew | term cargo build<cr>', { desc = '[C]ode [C]argo [B]uild' }),
+    vim.keymap.set('n', '<leader>ccB', '<cmd>tabnew | term cargo build --release<cr>', { desc = '[C]ode [C]argo Build --[R]elease' }),
+    vim.keymap.set('n', '<leader>cct', '<cmd>tabnew | term cargo test<cr>', { desc = '[C]ode [C]argo [T]est' }),
+    vim.keymap.set('n', '<leader>ccC', '<cmd>tabnew | term cargo check<cr>', { desc = '[C]ode [C]argo [C]heck' }),
+    vim.keymap.set('n', '<leader>ccc', '<cmd>tabnew | term cargo clean<cr>', { desc = '[C]ode [C]argo [C]lean' }),
+    vim.keymap.set('n', '<leader>ccd', '<cmd>tabnew | term cargo doc --open<cr>', { desc = '[C]ode [C]argo [D]oc open' }),
+    vim.keymap.set('n', '<leader>ccu', '<cmd>tabnew | term cargo update<cr>', { desc = '[C]ode [C]argo [U]pdate deps' }),
+    vim.keymap.set('n', '<leader>ccf', '<cmd>tabnew | term cargo fmt<cr>', { desc = '[C]ode [C]argo [F]ormat code' }),
+    vim.keymap.set('n', '<leader>ccl', '<cmd>tabnew | term cargo clippy<cr>', { desc = '[C]ode [C]argo C[L]ippy lint' }),
+
+    -- Increase font size
+    vim.keymap.set('n', '<C-=>', function()
+      local font = vim.o.guifont
+      local name, size = string.match(font, '([^:]+):h(%d+)')
+      size = tonumber(size) + 1
+      vim.o.guifont = name .. ':h' .. size
+    end),
+
+    -- Decrease font size
+    vim.keymap.set('n', '<C-->', function()
+      local font = vim.o.guifont
+      local name, size = string.match(font, '([^:]+):h(%d+)')
+      size = tonumber(size) - 1
+      vim.o.guifont = name .. ':h' .. size
+    end),
+  },
+}

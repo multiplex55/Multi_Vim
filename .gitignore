@@ -5,7 +5,3 @@ nvim
 
 spell/
 lazy-lock.json
-nim_test/bin/nim_test.exe
-/nim_test/InputFiles
-/rust_test/target/debug
-/nim_test/temp
