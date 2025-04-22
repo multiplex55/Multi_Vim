@@ -1,5 +1,6 @@
 return {
   {
+    -- NIM
     vim.keymap.set('n', '<leader>npr', function()
       local dir_path = vim.fn.expand '%:p:h'
       local filename_no_ext = vim.fn.expand '%:t:r'
@@ -11,10 +12,9 @@ return {
       desc = '[n]im c[p]p [r]un release',
     }),
 
-    -- Which-Key group labels
+    -- Rust-related commands under <leader>cc
     vim.keymap.set('n', '<leader>cc', '<Nop>', { desc = '[C]ode [C]argo' }),
 
-    -- Rust-related commands under <leader>cc
     vim.keymap.set('n', '<leader>ccr', '<cmd>tabnew | term cargo run<cr>', { desc = '[C]ode [C]argo [R]un' }),
     vim.keymap.set('n', '<leader>ccR', '<cmd>tabnew | term cargo run --release<cr>', { desc = '[C]ode [C]argo Run --[R]elease' }),
     vim.keymap.set('n', '<leader>ccb', '<cmd>tabnew | term cargo build<cr>', { desc = '[C]ode [C]argo [B]uild' }),
@@ -114,4 +114,32 @@ return {
   vim.keymap.set('n', '<leader>ssm', ':SessionSave<space>', { desc = '[S]ession [S]ave [M]anual Save' }),
   vim.keymap.set('n', '<leader>ssr', ':SessionRestore<space>', { desc = '[S]ession [S]ave [R]estore' }),
   vim.keymap.set('n', '<leader>ssd', ':SessionDelete<space>', { desc = '[S]ession [S]ave [D]elete' }),
+
+  --Theme Switching
+  vim.keymap.set('n', '<leader>Ut', function()
+    require('custom.utils').switch_colorscheme()
+  end, { desc = '[U]I [t]heme Switcher' }),
+
+  --TABS
+
+  -- Insert 4 spaces when pressing Tab in insert mode
+  vim.keymap.set('i', '<Tab>', function()
+    return string.rep(' ', vim.bo.softtabstop)
+  end, { expr = true, desc = 'Insert 4 spaces' }),
+
+  vim.keymap.set('i', '<S-Tab>', function()
+    local col = vim.fn.col '.' -- current column (1-based)
+    local line = vim.fn.getline '.' -- current line
+
+    if col > 1 then
+      local start_col = math.max(1, col - 4)
+      local indent = line:sub(start_col, col - 1)
+
+      if indent == '    ' then
+        return '<BS><BS><BS><BS>'
+      end
+    end
+
+    return ''
+  end, { expr = true, desc = 'Unindent 4 spaces' }),
 }
