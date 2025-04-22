@@ -108,4 +108,10 @@ return {
 
   -- Force delete (for when buffers hang)
   vim.keymap.set('n', '<leader>tD', '<cmd>bdelete!<cr>', { desc = '[T]ab [D]elete Force' }),
+
+  --Sessions Saving
+  -- Manual session controls
+  vim.keymap.set('n', '<leader>ssm', ':SessionSave<space>', { desc = '[S]ession [S]ave [M]anual Save' }),
+  vim.keymap.set('n', '<leader>ssr', ':SessionRestore<space>', { desc = '[S]ession [S]ave [R]estore' }),
+  vim.keymap.set('n', '<leader>ssd', ':SessionDelete<space>', { desc = '[S]ession [S]ave [D]elete' }),
 }
