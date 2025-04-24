@@ -158,4 +158,8 @@ return {
       ls.jump(-1)
     end
   end, { desc = 'LuaSnip jump backward' }),
+
+  vim.keymap.set('n', '<leader>dd', function()
+    Snacks.dashboard()
+  end, { desc = '[D]ashboard [D]isplay snacks' }),
 }
