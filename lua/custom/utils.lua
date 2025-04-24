@@ -29,6 +29,14 @@ M.switch_colorscheme = function()
     'mellifluous',
     'darkplus',
     'zenbones',
+    'fluoromachine',
+    'visual_studio_code',
+    'vscode',
+    'melange',
+    'everforest',
+    'zephyr',
+    'sweetie',
+    'ayu-mirage',
   }
 
   local original = vim.g.colors_name
@@ -36,8 +44,8 @@ M.switch_colorscheme = function()
   require('telescope.pickers')
     .new({
       layout_config = {
-        width = 0.35,
-        height = 0.6,
+        width = 0.33,
+        height = 0.5,
         prompt_position = 'top',
       },
       layout_strategy = 'vertical',

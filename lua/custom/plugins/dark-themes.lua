@@ -18,4 +18,13 @@ return {
   { 'ramojus/mellifluous.nvim', lazy = true }, -- Elegant, purply hues
   { 'mcchrish/zenbones.nvim', dependencies = { 'rktjmp/lush.nvim' }, lazy = true },
   { 'lunarvim/darkplus.nvim', lazy = true }, -- VS Code dark+
+
+  { 'maxmx03/fluoromachine.nvim', lazy = true }, -- high-contrast, retro-futuristic
+  { 'askfiy/visual_studio_code', lazy = true }, -- vs-code inspired
+  { 'Mofiqul/vscode.nvim', lazy = true }, -- another solid VSCode-like theme
+  { 'savq/melange-nvim', lazy = true }, -- warm, soft dark
+  { 'sainnhe/everforest', lazy = true }, -- earthy green-dark
+  { 'glepnir/zephyr-nvim', lazy = true }, -- dark with purple/cyan accents
+  { 'NTBBloodbath/sweetie.nvim', lazy = true }, -- candy-colored dark
+  { 'Shatur/neovim-ayu', lazy = true }, -- ayu-mirage: stylish and dark
 }

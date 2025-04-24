@@ -142,4 +142,20 @@ return {
 
     return ''
   end, { expr = true, desc = 'Unindent 4 spaces' }),
+
+  -- LuaSnip jump forward
+  vim.keymap.set({ 'i', 's' }, '<C-j>', function()
+    local ls = require 'luasnip'
+    if ls.expand_or_jumpable() then
+      ls.expand_or_jump()
+    end
+  end, { desc = 'LuaSnip jump forward' }),
+
+  -- LuaSnip jump backward
+  vim.keymap.set({ 'i', 's' }, '<C-k>', function()
+    local ls = require 'luasnip'
+    if ls.jumpable(-1) then
+      ls.jump(-1)
+    end
+  end, { desc = 'LuaSnip jump backward' }),
 }
