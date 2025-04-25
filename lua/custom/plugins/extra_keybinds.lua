@@ -162,4 +162,9 @@ return {
   vim.keymap.set('n', '<leader>dd', function()
     Snacks.dashboard()
   end, { desc = '[D]ashboard [D]isplay snacks' }),
+
+  -- GIT
+  vim.keymap.set('n', '<leader>Gn', function()
+    require('neogit').open()
+  end, { desc = 'Open Neogit' }),
 }

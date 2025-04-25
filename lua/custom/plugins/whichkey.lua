@@ -60,7 +60,7 @@ return {
         },
         {
           '<leader>d',
-          group = '[D]ocument',
+          group = '[D]ocument and [D]ashboard',
         },
         {
           '<leader>r',
@@ -75,9 +75,8 @@ return {
           group = '[W]orkspace',
         },
         {
-          '<leader>h',
-          group = 'Git [H]unk',
-          mode = { 'n', 'v' },
+          '<leader>G',
+          group = '[G]it',
         },
         {
           '<leader>w',
@@ -95,4 +94,3 @@ return {
     },
   },
 }
-
