@@ -167,4 +167,52 @@ return {
   vim.keymap.set('n', '<leader>Gn', function()
     require('neogit').open()
   end, { desc = 'Open Neogit' }),
+
+  -- HOP - EasyMotion-style navigation
+  vim.keymap.set('n', '<leader>hw', function()
+    require('hop').hint_words()
+  end, { desc = '[H]op [W]ords' }),
+
+  vim.keymap.set('n', '<leader>hl', function()
+    require('hop').hint_lines()
+  end, { desc = '[H]op [L]ines' }),
+
+  vim.keymap.set('n', '<leader>hc', function()
+    require('hop').hint_char1()
+  end, { desc = '[H]op [C]har 1' }),
+
+  vim.keymap.set('n', '<leader>hC', function()
+    require('hop').hint_char2()
+  end, { desc = '[H]op [C]har 2' }),
+
+  -- Hop to word across all windows
+  vim.keymap.set('n', '<leader>hw', function()
+    require('hop').hint_words { multi_windows = true }
+  end, { desc = '[H]op [W]ords (all windows)' }),
+
+  -- Hop to line across all windows
+  vim.keymap.set('n', '<leader>hL', function()
+    require('hop').hint_lines { multi_windows = true }
+  end, { desc = '[H]op [L]ines (all windows)' }),
+
+  -- Hop to pattern (search-like)
+  vim.keymap.set('n', '<leader>hp', function()
+    require('hop').hint_patterns()
+  end, { desc = '[H]op to [P]attern' }),
+
+  -- Visual mode: Hop to word
+  vim.keymap.set('v', '<leader>hW', function()
+    require('hop').hint_words()
+  end, { desc = '[H]op [W]ords (visual)' }),
+
+  -- Yank after hopping to word (insert-mode like behavior)
+  vim.keymap.set('n', '<leader>hy', function()
+    local hop = require 'hop'
+    hop.hint_words {
+      callback = function(node)
+        vim.api.nvim_win_set_cursor(0, { node.line + 1, node.column })
+        vim.cmd 'normal! yw'
+      end,
+    }
+  end, { desc = '[H]op [Y]ank word' }),
 }

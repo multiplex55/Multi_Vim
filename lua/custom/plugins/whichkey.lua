@@ -90,6 +90,10 @@ return {
           '<leader>U',
           group = '[U]i',
         },
+        {
+          '<leader>h',
+          group = '[h]op',
+        },
       },
     },
   },
