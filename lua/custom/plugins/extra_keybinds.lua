@@ -215,4 +215,29 @@ return {
       end,
     }
   end, { desc = '[H]op [Y]ank word' }),
+
+  -- Debugging
+  vim.keymap.set('n', '<F5>', function()
+    require('dap').continue()
+  end, { desc = 'Start/Continue Debugging' }),
+
+  vim.keymap.set('n', '<F10>', function()
+    require('dap').step_over()
+  end, { desc = 'Step Over' }),
+
+  vim.keymap.set('n', '<F11>', function()
+    require('dap').step_into()
+  end, { desc = 'Step Into' }),
+
+  vim.keymap.set('n', '<F12>', function()
+    require('dap').step_out()
+  end, { desc = 'Step Out' }),
+
+  vim.keymap.set('n', '<leader>cdb', function()
+    require('dap').toggle_breakpoint()
+  end, { desc = '[C]ode [D]ebug Toggle [B]reakpoint' }),
+
+  vim.keymap.set('n', '<leader>cdr', function()
+    require('dap').repl.open()
+  end, { desc = '[C]ode [D]ebug [R]EPL' }),
 }

@@ -193,6 +193,8 @@ require('lazy').setup({ {
   },
 })
 
+require 'custom.dap-config'
+
 -- Move this inside config block to ensure it's called AFTER plugin is loaded
 -- COLOR SCHEME — manually comment/uncomment to select the one you want
 
