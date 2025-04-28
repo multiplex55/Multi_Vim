@@ -10,7 +10,7 @@ return {
           code_action = '💡',
         },
         lightbulb = {
-          enable = true,
+          enable = false,
           sign = true,
           virtual_text = true,
         },

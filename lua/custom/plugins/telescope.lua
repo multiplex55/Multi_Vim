@@ -97,6 +97,10 @@ return {
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, {
         desc = '[ ] Find existing buffers',
       })
+      -- Diagnostic keymaps
+      vim.keymap.set('n', '<leader>sq', vim.diagnostic.setqflist, {
+        desc = '[S]earch [Q]uickfix list',
+      })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -128,6 +132,10 @@ return {
       end, {
         desc = '[S]earch [N]eovim files',
       })
+
+      vim.keymap.set('n', 'leader>sR', builtin.registers, { desc = '[S]earch Yanks / [R]egisters' })
+
+      vim.keymap.set('n', '<leader>sS', builtin.lsp_workspace_symbols, { desc = '[S]earch [S]ymbols in workspace' })
     end,
   },
 }

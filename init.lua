@@ -5,6 +5,9 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.guifont = 'Consolas:h12' -- or :h13, :h14 depending on size
 
+vim.api.nvim_set_hl(0, 'bg_as_fg', { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'combine', { link = 'Normal' })
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
@@ -88,11 +91,6 @@ vim.opt.softtabstop = 4 -- Insert 4 spaces when pressing Tab
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
--- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
-  desc = 'Open diagnostic [Q]uickfix list',
-})
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which

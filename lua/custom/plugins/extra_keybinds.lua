@@ -240,4 +240,11 @@ return {
   vim.keymap.set('n', '<leader>cdr', function()
     require('dap').repl.open()
   end, { desc = '[C]ode [D]ebug [R]EPL' }),
+
+  -- vim lspsaga hover documentation
+  -- Hover documentation
+  --
+  vim.keymap.set('n', 'K', function()
+    vim.cmd 'Lspsaga hover_doc'
+  end, { desc = 'Show Hover Doc' }),
 }
