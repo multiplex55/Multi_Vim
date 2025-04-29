@@ -44,6 +44,14 @@ return {
     end),
   },
 
+  -- Format Buffer
+  vim.keymap.set('n', '<leader>fb', function()
+    require('conform').format {
+      async = true,
+      lsp_fallback = 'fallback',
+    }
+  end, { desc = '[F]ormat buffer' }),
+
   -- Window Management
   -- Move between windows
   vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = '[W]indows Left' }),
@@ -216,6 +224,10 @@ return {
     }
   end, { desc = '[H]op [Y]ank word' }),
 
+  vim.keymap.set('v', '<leader>hh', function()
+    require('hop').hint_anywhere()
+  end, { desc = '[H]op [W]ords (visual)' }),
+
   -- Debugging
   vim.keymap.set('n', '<F5>', function()
     require('dap').continue()
@@ -247,4 +259,19 @@ return {
   vim.keymap.set('n', 'K', function()
     vim.cmd 'Lspsaga hover_doc'
   end, { desc = 'Show Hover Doc' }),
+
+  -- Overseer keybinds under <leader>o
+  vim.keymap.set('n', '<leader>oo', '<cmd>OverseerToggle<cr>', { desc = '[O]verseer [O]pen Task List' }),
+  vim.keymap.set('n', '<leader>or', '<cmd>OverseerRun<cr>', { desc = '[O]verseer [R]un Task' }),
+  vim.keymap.set('n', '<leader>ot', '<cmd>OverseerTaskAction<cr>', { desc = '[O]verseer Task Ac[t]ion' }),
+  vim.keymap.set('n', '<leader>oa', '<cmd>OverseerQuickAction<cr>', { desc = '[O]verseer [A]ction (Quick)' }),
+  vim.keymap.set('n', '<leader>oc', '<cmd>OverseerClearCache<cr>', { desc = '[O]verseer [C]lear Cache' }),
+  vim.keymap.set('n', '<leader>os', '<cmd>OverseerSaveBundle<cr>', { desc = '[O]verseer [S]ave Task Bundle' }),
+  vim.keymap.set('n', '<leader>ol', '<cmd>OverseerLoadBundle<cr>', { desc = '[O]verseer [L]oad Task Bundle' }),
+  vim.keymap.set('n', '<leader>od', '<cmd>OverseerDeleteBundle<cr>', { desc = '[O]verseer [D]elete Task Bundle' }),
+  vim.keymap.set('n', '<leader>oq', '<cmd>OverseerQuickAction<cr>', { desc = '[O]verseer [Q]uick Action' }),
+  vim.keymap.set('n', '<leader>ob', '<cmd>OverseerBuild<cr>', { desc = '[O]verseer [B]uild Tasks' }),
+
+  --Telescope file browser
+  vim.keymap.set('n', '<space>sb', ':Telescope file_browser path=%":p:h select_buffer=true<CR>', { desc = '[S]earch file [B]rowser' }),
 }

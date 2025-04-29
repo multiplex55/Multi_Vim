@@ -6,7 +6,7 @@ return {
     opts = {
       sort = { 'alphanum' },
 
-      expand = 20, -- Expand groups with 10 or fewer mappings
+      expand = 0, -- Expand groups with 10 or fewer mappings
       win = {
         height = {
           min = 20, -- which key min height
@@ -55,24 +55,24 @@ return {
       spec = {
         {
           '<leader>c',
-          group = '[C]ode',
+          group = '[c]ode',
           mode = { 'n', 'x' },
         },
         {
           '<leader>d',
-          group = '[D]ocument and [D]ashboard',
+          group = '[d]ocument and dashboard',
         },
         {
           '<leader>r',
-          group = '[R]ename',
+          group = '[r]ename',
         },
         {
           '<leader>s',
-          group = '[S]earch',
+          group = '[s]earch',
         },
         {
           '<leader>w',
-          group = '[W]orkspace',
+          group = '[w]indows',
         },
         {
           '<leader>G',
@@ -80,11 +80,11 @@ return {
         },
         {
           '<leader>w',
-          group = '[W]indow',
+          group = '[w]indow',
         },
         {
-          '<leader>T',
-          group = '[T]abs',
+          '<leader>t',
+          group = '[t]abs and Toggle',
         },
         {
           '<leader>U',
@@ -93,6 +93,11 @@ return {
         {
           '<leader>h',
           group = '[h]op',
+        },
+        {
+          '<leader>f',
+          group = '[F]ormat',
+          mode = { 'n' },
         },
       },
     },
