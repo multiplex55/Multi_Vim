@@ -27,4 +27,6 @@ return {
   { 'glepnir/zephyr-nvim', lazy = true }, -- dark with purple/cyan accents
   { 'NTBBloodbath/sweetie.nvim', lazy = true }, -- candy-colored dark
   { 'Shatur/neovim-ayu', lazy = true }, -- ayu-mirage: stylish and dark
+
+  { 'loctvl842/monokai-pro.nvim', lazy = true },
 }

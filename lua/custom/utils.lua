@@ -37,6 +37,7 @@ M.switch_colorscheme = function()
     'zephyr',
     'sweetie',
     'ayu-mirage',
+    'monokai-pro.nvim',
   }
 
   local original = vim.g.colors_name

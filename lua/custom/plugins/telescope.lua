@@ -99,7 +99,7 @@ return {
       })
       -- Diagnostic keymaps
       vim.keymap.set('n', '<leader>sq', vim.diagnostic.setqflist, {
-        desc = '[S]earch [Q]uickfix list',
+        desc = '[S]earch [Q]uickfix Diagnostic list',
       })
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -136,6 +136,8 @@ return {
       vim.keymap.set('n', 'leader>sR', builtin.registers, { desc = '[S]earch Yanks / [R]egisters' })
 
       vim.keymap.set('n', '<leader>sS', builtin.lsp_workspace_symbols, { desc = '[S]earch [S]ymbols in workspace' })
+
+      vim.keymap.set('n', '<leader>sc', ':Telescope command_palette<cr>', { desc = '[S]earch [C]ommands' })
     end,
   },
 }
