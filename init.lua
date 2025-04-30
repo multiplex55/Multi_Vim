@@ -127,7 +127,18 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', {
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
+-- [[ Install `lazy.nvim` plugin manager ]]
+--    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
+  end
+end 
 
+vim.opt.rtp:prepend(lazypath)
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -141,17 +152,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- [[ Install `lazy.nvim` plugin manager ]]
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-  if vim.v.shell_error ~= 0 then
-    error('Error cloning lazy.nvim:\n' .. out)
-  end
-end ---@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
+-- Don't autoformat on save for snippets
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*/snippets/*.lua',
+  callback = function()
+    vim.cmd 'set eventignore+=BufWritePre' -- temporary block format-on-save
+  end,
+})
 
 -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
 -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -201,3 +208,5 @@ require 'custom.dap-config'
 vim.cmd.colorscheme 'tokyonight-night' -- Tokyonight Night
 -- vim.cmd.colorscheme 'tokyonight-moon'   -- Tokyonight Moon
 -- vim.cmd.colorscheme 'tokyonight-day'    -- Tokyonight Day
+
+

@@ -6,13 +6,13 @@ return {
     },
     config = function()
       require('neogen').setup {
-        snippet_engine = 'luasnip', -- you already have luasnip installed
+        snippet_engine = 'luasnip',
         enabled = true,
         languages = {
           rust = {
             template = {
-              annotation_convention = 'rustdoc', -- <-- use Rust style `///`
-              custom = require 'custom.neogen-templates.rust', -- 🧠 custom template location
+              annotation_convention = 'rustdoc',
+              custom = require 'custom.neogen-templates.rust',
             },
           },
         },
