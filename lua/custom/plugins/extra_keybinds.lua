@@ -224,9 +224,9 @@ return {
     }
   end, { desc = '[H]op [Y]ank word' }),
 
-  vim.keymap.set('v', '<leader>hh', function()
+  vim.keymap.set('n', '<leader>hh', function()
     require('hop').hint_anywhere()
-  end, { desc = '[H]op [W]ords (visual)' }),
+  end, { desc = '[h]op Anyw[h]ere (visual)' }),
 
   -- Debugging
   vim.keymap.set('n', '<F5>', function()
