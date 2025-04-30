@@ -171,10 +171,18 @@ return {
     Snacks.dashboard()
   end, { desc = '[D]ashboard [D]isplay snacks' }),
 
-  -- GIT
+  -- GIT and git diff
   vim.keymap.set('n', '<leader>Gn', function()
     require('neogit').open()
-  end, { desc = 'Open Neogit' }),
+  end, { desc = '[G]IT [n]eogit' }),
+
+  vim.keymap.set('n', '<leader>Gd', function()
+    require('diffview').open()
+  end, { desc = '[G]IT [d]iffview' }),
+
+  vim.keymap.set('n', '<leader>GD', function()
+    require('mini.diff').open()
+  end, { desc = '[G]IT [D]iff Overlay' }),
 
   -- HOP - EasyMotion-style navigation
   vim.keymap.set('n', '<leader>hw', function()

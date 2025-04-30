@@ -10,14 +10,5 @@ return {
         signs = { add = '▎', change = '▎', delete = '' },
       },
     },
-    keys = {
-      {
-        '<leader>GD',
-        function()
-          require('mini.diff').toggle_overlay(0)
-        end,
-        desc = 'Toggle mini.diff overlay',
-      },
-    },
   },
 }
