@@ -210,3 +210,21 @@ require 'custom.dap-config'
 vim.cmd.colorscheme 'tokyonight-night' -- Tokyonight Night
 -- vim.cmd.colorscheme 'tokyonight-moon'   -- Tokyonight Moon
 -- vim.cmd.colorscheme 'tokyonight-day'    -- Tokyonight Day
+
+if vim.g.neovide then
+  -- Enable cursor animation
+  vim.g.neovide_cursor_animation_length = 0.13 --0.13
+  vim.g.neovide_cursor_trail_size = 0.8
+  vim.g.neovide_cursor_antialiasing = true
+  vim.g.neovide_cursor_animate_in_insert_mode = true
+  vim.g.neovide_cursor_animate_command_line = true
+  vim.g.neovide_cursor_smooth_blink = true
+
+  -- Optional: Uncomment to experiment with different cursor effects
+  -- vim.g.neovide_cursor_vfx_mode = 'railgun'
+  -- vim.g.neovide_cursor_vfx_mode = "torpedo"
+  vim.g.neovide_cursor_vfx_mode = 'pixiedust'
+  -- vim.g.neovide_cursor_vfx_mode = "sonicboom"
+  -- vim.g.neovide_cursor_vfx_mode = "ripple"
+  -- vim.g.neovide_cursor_vfx_mode = 'wireframe'
+end
