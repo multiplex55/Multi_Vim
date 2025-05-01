@@ -3,13 +3,15 @@
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.o.guifont = 'Consolas:h12' -- or :h13, :h14 depending on size
+-- vim.o.guifont = 'Consolas:h12' -- or :h13, :h14 depending on size
+-- vim.g.have_nerd_font = false
 
 vim.api.nvim_set_hl(0, 'bg_as_fg', { link = 'Normal' })
 vim.api.nvim_set_hl(0, 'combine', { link = 'Normal' })
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
+-- vim.o.guifont = 'FiraCode Nerd Font:h12'
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -136,7 +138,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     error('Error cloning lazy.nvim:\n' .. out)
   end
-end 
+end
 
 vim.opt.rtp:prepend(lazypath)
 -- Highlight when yanking (copying) text
@@ -208,5 +210,3 @@ require 'custom.dap-config'
 vim.cmd.colorscheme 'tokyonight-night' -- Tokyonight Night
 -- vim.cmd.colorscheme 'tokyonight-moon'   -- Tokyonight Moon
 -- vim.cmd.colorscheme 'tokyonight-day'    -- Tokyonight Day
-
-
