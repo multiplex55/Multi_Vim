@@ -227,4 +227,5 @@ if vim.g.neovide then
   -- vim.g.neovide_cursor_vfx_mode = "sonicboom"
   -- vim.g.neovide_cursor_vfx_mode = "ripple"
   -- vim.g.neovide_cursor_vfx_mode = 'wireframe'
+
 end
