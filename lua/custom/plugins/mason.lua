@@ -3,11 +3,18 @@ return {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = { -- Automatically install LSPs and related tools to stdpath for Neovim
-      {
-        'williamboman/mason.nvim',
-        config = true,
-      }, -- NOTE: Must be loaded before dependants
-      'williamboman/mason-lspconfig.nvim',
+
+      -- MASON OVERRIDE UNTIL LAZY IS FIXED
+      -- {
+      --   'williamboman/mason.nvim',
+      --   config = true,
+      -- },
+      -- NOTE: Must be loaded before dependants
+      -- '{williamboman/mason-lspconfig.nvim'},
+
+      { 'mason-org/mason.nvim', version = '1.11.0' },
+      { 'mason-org/mason-lspconfig.nvim', version = '1.32.0' },
+
       'WhoIsSethDaniel/mason-tool-installer.nvim', -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       {
