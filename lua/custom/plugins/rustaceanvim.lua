@@ -10,7 +10,7 @@ return {
     },
     config = function()
       local mason_registry = require 'mason-registry'
-      local codelldb = mason_registry.get_package 'codelldb'
+      -- local codelldb = mason_registry.get_package 'codelldb'
 
       -- Use environment variable to get install path
       local install_path = vim.fn.expand '$MASON' .. '\\packages\\codelldb'

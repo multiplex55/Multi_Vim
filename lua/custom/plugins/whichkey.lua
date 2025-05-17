@@ -6,10 +6,10 @@ return {
     opts = {
       sort = { 'alphanum' },
 
-      expand = 0, -- Expand groups with 10 or fewer mappings
+      expand = 40, -- Expand groups with 10 or fewer mappings
       win = {
         height = {
-          min = 20, -- which key min height
+          min = 30, -- which key min height
           max = 40,
         }, -- Increase max height of the popup
       },

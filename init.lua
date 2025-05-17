@@ -87,6 +87,13 @@ vim.opt.shiftwidth = 4 -- Indent by 4 spaces when using >> or <<
 vim.opt.tabstop = 4 -- Show a tab as 4 spaces
 vim.opt.softtabstop = 4 -- Insert 4 spaces when pressing Tab
 
+-- Code Folding
+-- vim.opt.foldmethod = 'expr'
+-- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+--vim.opt.foldlevel = 99 -- Don't fold by default
+-- or:
+--vim.opt.foldenable = false -- disables folding at startup
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -103,12 +110,6 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', {
   desc = 'Exit terminal mode',
 })
-
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -227,5 +228,4 @@ if vim.g.neovide then
   -- vim.g.neovide_cursor_vfx_mode = "sonicboom"
   -- vim.g.neovide_cursor_vfx_mode = "ripple"
   -- vim.g.neovide_cursor_vfx_mode = 'wireframe'
-
 end
