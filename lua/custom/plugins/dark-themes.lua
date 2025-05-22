@@ -9,7 +9,6 @@ return {
   { 'marko-cerovac/material.nvim', lazy = true },
   { 'rose-pine/neovim', name = 'rose-pine', lazy = true },
 
-  -- New dark-only themes
   { 'nyoom-engineering/oxocarbon.nvim', lazy = true }, -- IBM Carbon-inspired dark
   { 'bluz71/vim-nightfly-colors', name = 'nightfly', lazy = true },
   { 'fenetikm/falcon', lazy = true }, -- Deep dark purple-blue

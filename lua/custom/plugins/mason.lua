@@ -11,6 +11,7 @@ return {
       -- },
       -- NOTE: Must be loaded before dependants
       -- '{williamboman/mason-lspconfig.nvim'},
+      -- TODO Probably look into unpinning this
 
       { 'mason-org/mason.nvim', version = '1.11.0' },
       { 'mason-org/mason-lspconfig.nvim', version = '1.32.0' },
