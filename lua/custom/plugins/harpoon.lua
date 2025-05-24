@@ -10,15 +10,15 @@ return {
       harpoon:setup()
       -- REQUIRED
 
-      vim.keymap.set('n', '<leader>a', function()
+      vim.keymap.set('n', '<leader>ba', function()
         harpoon:list():add()
       end, {
-        desc = '[a]dd Harpoon',
+        desc = '[b]ookmark [a]dd Harpoon',
       })
-      vim.keymap.set('n', '<C-e>', function()
+      vim.keymap.set('n', '<leader>bq', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end, {
-        desc = 'ctrl + Quick M[e]nu',
+        desc = '[b]ookmark Harpoon [q]uick-menu',
       })
 
       -- vim.keymap.set('n', '<C-h>', function()

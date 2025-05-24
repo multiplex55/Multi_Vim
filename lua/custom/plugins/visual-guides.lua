@@ -34,16 +34,23 @@ return {
     main = 'ibl',
     event = 'BufReadPre',
     config = function()
-      -- Add highlight defs above this line
-      vim.cmd [[
-      highlight default RainbowIndent1 guifg=#E06C75
-      highlight default RainbowIndent2 guifg=#E5C07B
-      highlight default RainbowIndent3 guifg=#98C379
-      highlight default RainbowIndent4 guifg=#56B6C2
-      highlight default RainbowIndent5 guifg=#61AFEF
-      highlight default RainbowIndent6 guifg=#C678DD
-      highlight default RainbowIndent7 guifg=#ABB2BF
-    ]]
+      local function set_rainbow_highlights()
+        vim.api.nvim_set_hl(0, 'RainbowIndent1', { fg = '#E06C75' })
+        vim.api.nvim_set_hl(0, 'RainbowIndent2', { fg = '#E5C07B' })
+        vim.api.nvim_set_hl(0, 'RainbowIndent3', { fg = '#98C379' })
+        vim.api.nvim_set_hl(0, 'RainbowIndent4', { fg = '#56B6C2' })
+        vim.api.nvim_set_hl(0, 'RainbowIndent5', { fg = '#61AFEF' })
+        vim.api.nvim_set_hl(0, 'RainbowIndent6', { fg = '#C678DD' })
+        vim.api.nvim_set_hl(0, 'RainbowIndent7', { fg = '#ABB2BF' })
+      end
+
+      -- Set highlights initially
+      set_rainbow_highlights()
+
+      -- Set highlights again after colorscheme is applied
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        callback = set_rainbow_highlights,
+      })
 
       require('ibl').setup {
         indent = {
