@@ -195,6 +195,7 @@ return {
         -- pyright = {},
         -- rust_analyzer = {},
         nim_langserver = {},
+        ocamllsp = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -223,6 +224,12 @@ return {
         },
       }
 
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = { '*.ml', '*.mli' },
+        callback = function()
+          vim.lsp.buf.format { async = false }
+        end,
+      })
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run

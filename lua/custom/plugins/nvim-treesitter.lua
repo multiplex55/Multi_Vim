@@ -20,6 +20,9 @@ return {
         'vimdoc',
         'go',
         'nim',
+        'ocaml',
+        'ocaml_interface',
+        'ocamllex',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
