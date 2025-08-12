@@ -19,7 +19,7 @@ return {
     vim.keymap.set('n', '<leader>ccR', '<cmd>tabnew | term cargo run --release<cr>', { desc = '[C]ode [C]argo Run --[R]elease' }),
     vim.keymap.set('n', '<leader>ccb', '<cmd>tabnew | term cargo build<cr>', { desc = '[C]ode [C]argo [B]uild' }),
     vim.keymap.set('n', '<leader>ccB', '<cmd>tabnew | term cargo build --release<cr>', { desc = '[C]ode [C]argo Build --[R]elease' }),
-    vim.keymap.set('n', '<leader>cct', '<cmd>tabnew | term cargo test<cr>', { desc = '[C]ode [C]argo [T]est' }),
+    vim.keymap.set('n', '<leader>cct', '<cmd>tabnew | term cargo nextest run --no-capture --test-threads=1<cr>', { desc = '[C]ode [C]argo [T]est' }),
     vim.keymap.set('n', '<leader>ccC', '<cmd>tabnew | term cargo check<cr>', { desc = '[C]ode [C]argo [C]heck' }),
     vim.keymap.set('n', '<leader>ccc', '<cmd>tabnew | term cargo clean<cr>', { desc = '[C]ode [C]argo [C]lean' }),
     vim.keymap.set('n', '<leader>ccd', '<cmd>tabnew | term cargo doc --open<cr>', { desc = '[C]ode [C]argo [D]oc open' }),
