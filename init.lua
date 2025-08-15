@@ -3,6 +3,27 @@
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+require 'custom.windows_uri_fix'
+
+-- Fix Neovide starting in "c:\" (lowercase) which later leaks into URIs
+if (vim.uv or vim.loop).os_uname().sysname == 'Windows_NT' then
+  vim.api.nvim_create_autocmd('VimEnter', {
+    once = true,
+    callback = function()
+      local cwd = (vim.uv or vim.loop).cwd() or ''
+      local upper = cwd:gsub('^([a-z]):', function(d)
+        return d:upper() .. ':'
+      end)
+      if upper ~= cwd then
+        vim.cmd('silent! lcd ' .. vim.fn.fnameescape(upper))
+      end
+    end,
+  })
+end
+
+pcall(require, 'custom.neovide_lsp_guard')
+
 -- vim.o.guifont = 'Consolas:h12' -- or :h13, :h14 depending on size
 -- vim.g.have_nerd_font = false
 
@@ -155,14 +176,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Don't autoformat on save for snippets
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*/snippets/*.lua',
-  callback = function()
-    vim.cmd 'set eventignore+=BufWritePre' -- temporary block format-on-save
-  end,
-})
-
 -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
 -- init.lua. If you want these files, they are in the repository, so you can just download them and
 -- place them in the correct locations.
@@ -202,6 +215,8 @@ require('lazy').setup({ {
 })
 
 require 'custom.dap-config'
+
+pcall(require, 'custom.neovide_ocaml_autostart')
 
 -- Move this inside config block to ensure it's called AFTER plugin is loaded
 -- COLOR SCHEME — manually comment/uncomment to select the one you want

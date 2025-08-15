@@ -13,8 +13,8 @@ return {
       -- '{williamboman/mason-lspconfig.nvim'},
       -- TODO Probably look into unpinning this
 
-      { 'mason-org/mason.nvim', version = '1.11.0' },
-      { 'mason-org/mason-lspconfig.nvim', version = '1.32.0' },
+      { 'mason-org/mason.nvim', config = true, lazy = false },
+      { 'mason-org/mason-lspconfig.nvim' },
 
       'WhoIsSethDaniel/mason-tool-installer.nvim', -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -189,13 +189,23 @@ return {
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      local util = require 'lspconfig.util'
       local servers = {
         -- clangd = {},
         gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         nim_langserver = {},
-        ocamllsp = {},
+
+        ocamllsp = {
+          root_dir = util.root_pattern('dune-project', 'dune-workspace', '.git'),
+          autostart = not vim.g.neovide, -- off in Neovide; we’ll start it ourselves below
+          on_attach = function(client, bufnr)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.semanticTokensProvider = nil
+          end,
+        },
+
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -224,12 +234,6 @@ return {
         },
       }
 
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        pattern = { '*.ml', '*.mli' },
-        callback = function()
-          vim.lsp.buf.format { async = false }
-        end,
-      })
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run
@@ -256,6 +260,10 @@ return {
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            if server_name == 'ocamllsp' then
+              server.capabilities.textDocument = server.capabilities.textDocument or {}
+              server.capabilities.textDocument.semanticTokens = nil
+            end
             require('lspconfig')[server_name].setup(server)
           end,
         },

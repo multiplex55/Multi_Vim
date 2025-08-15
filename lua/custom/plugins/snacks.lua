@@ -7,6 +7,7 @@ return {
       'nvim-lua/plenary.nvim',
     },
     opts = {
+      session = { enabled = false }, -- no auto-restore on startup
       dashboard = {
         enabled = true,
         width = 60,
